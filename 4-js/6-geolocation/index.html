@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<img src alt="">
+
+<script>
+    navigator.geolocation.getCurrentPosition(function(e){
+
+        var img = document.createElement('img');
+        img.alt = 'My map';
+        img.src = 'https://maps.googleapis.com/maps/api/staticmap?center='
+                + e.coords.latitude + ',' + e.coords.longitude + '&zoom=15&size=700x700';
+        document.body.appendChild(img);
+    });
+
+
+
+    /*function getLocation(){
+        if(navigator.geolocation){
+            console.log("success");
+            navigator.geolocation.getCurrentPosition(success);
+        }else{
+            console.log("No position");
+        }
+    }
+    function success(position){
+        var crd = position.coords;
+        var lat = crd.latitude;
+        var long = crd.longitude;
+        var newsource = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + long +
+                "&zoom=15&size=700x700";
+        console.log(newsource);
+    }
+    getLocation();*/
+
+
+</script>
+</body>
+</html>

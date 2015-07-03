@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            position: relative;
+            height: 1000px;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <button>Plain</button>
+    <easy-button></easy-button>
+</div>
+<div>
+    <easy-button></easy-button>
+</div>
+
+<template>
+    <style>
+        button {
+            position: absolute;
+            top: calc(50% - 160px);
+            left: calc(50% - 220px);
+            width: 440px;
+            height: 365px;
+            outline: none;
+            border: none;
+            border-radius: 50%;
+            background: #b3b3b3;
+            box-shadow:
+            0 10px 0 #888888,
+            0 20px 0 #888888,
+            0 30px 0  #888888,
+            -10px 40px 0 hsla(0, 0%, 0%, .2);
+        }
+
+        button:before {
+            position: absolute;
+            top: -95px;
+            left: 40px;
+            width: 360px;
+            height: 305px;
+            border-radius: inherit;
+            color: #ff6573;
+            background-color: currentColor;
+            box-shadow:
+            0 30px 0 #c54c57,
+            0 60px 0 #c54c57,
+            0 90px 0 #c54c57,
+            0 110px 0 #c54c57,
+            -25px 140px 0 hsla(0, 0%, 0%, .1);
+            content: '';
+            transition: all 50ms;
+        }
+
+        button:active:before{
+            top: 0px;
+            box-shadow:
+            0 16px #c54c57,
+            0 16px #c54c57,
+            0 16px #c54c57,
+            0 16px #c54c57,
+            0 16px 0 #c54c57,
+            -5px 20px 0 hsla(0, 0%, 0%, .1);
+        }
+    </style>
+
+    <button></button>
+</template>
+<script>
+    var element = Object.create(HTMLElement.prototype);
+    var template = document.querySelector('template').content;
+
+    element.attachedCallback = function(){
+        var clone = template.cloneNode(true);
+        var rootShadow = this.createShadowRoot();
+        rootShadow.appendChild(clone);
+    }
+
+
+    document.registerElement('easy-button', {
+        prototype: element
+    });
+
+</script>
+
+</body>
+</html>

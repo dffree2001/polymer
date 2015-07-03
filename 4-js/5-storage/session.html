@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<h1 contenteditable>To Do List</h1>
+
+<ol>
+    <li contenteditable>Go to Fresno</li>
+    <li contenteditable>Go to Fresno</li>
+    <li contenteditable>Go to Fresno</li>
+</ol>
+
+
+<script>
+    var ol = document.querySelector('ol');
+
+    ol.addEventListener('input', function(e){
+        sessionStorage.setItem('todo', ol.innerHTML);
+    })
+    if(sessionStorage.getItem('todo')) {
+        ol.innerHTML = sessionStorage.getItem('todo');
+    }
+
+
+</script>
+</body>
+</html>

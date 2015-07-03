@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<template>
+    <p><a href = ""></a></p>
+</template>
+
+<body>
+<script>
+    var proto = Object.create(HTMLElement.prototype);
+    var currentDoc = document.currentScript.ownerDocument;
+    var template = currentDoc.querySelector('template').content;
+
+    proto.attachedCallback = function(){
+        var shadowRoot = this.createShadowRoot();
+        var titles = document.querySelectorAll('h2');
+        for(var title in titles){
+            var clone = template.cloneNode(true);
+            clone.querySelector('a').textContent = titles[title].textContent;
+            clone.querySelector('a').href = "#" + titles[title].id;
+            shadowRoot.appendChild(clone);
+        }
+
+    }
+
+
+    document.registerElement('fcc-toc', {
+        prototype: proto
+    });
+</script>
+
+</body>
+</html>

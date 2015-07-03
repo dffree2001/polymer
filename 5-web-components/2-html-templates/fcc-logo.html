@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<fcc-logo size="300"></fcc-logo>
+
+<template>
+    <a href="http://www.fresnocitycollege.edu">
+        <img src="http://open-site.org/img/logos/114789.jpg" width="100" height="100">
+    </a>
+</template>
+
+<script>
+    var element = Object.create(HTMLElement.prototype);
+
+    element.attachedCallback = function(){
+        var template = document.querySelector('template').content;
+        var size = this.getAttribute('size');
+        var clone = template.cloneNode(true);
+        if(size>0){
+            clone.querySelector('img').width = size;
+            clone.querySelector('img').height = size;
+        }
+
+
+
+        this.appendChild(clone);
+    };
+
+    document.registerElement('fcc-logo', {
+        prototype: element
+    });
+</script>
+</body>
+</html>

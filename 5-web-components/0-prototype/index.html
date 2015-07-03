@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>{}
+    function Animal(name, age, brothers, sisters, sad){
+        this.name = name;
+        this.age = age;
+        this.brothers = brothers;
+        this.sisters = sisters;
+        this.sad = sad;
+    }
+
+    //Reusable function
+    Animal.prototype.isSad = function(){
+        if (this.sad) {
+            return 'Ohh :(';
+        }
+        else {
+            return 'Yay!';
+        }
+    }
+
+    //Static function good for only one object
+
+
+    var cow = new Animal("Martha", 10, ["John"], null, true);
+    var frog = new Animal("Trudy", 18, ["Bruno"], null, false);
+    console.log(cow);
+    console.log(frog);
+
+    cow.hasMilk = function (){
+        return 'Yes!'
+    }
+
+    cow.blahblah = function(){
+
+}
+    /*var cow = {};
+
+    cow.name = "Martha";
+    cow.age = 10;
+    cow.brothers = ["John", "Joanna", "qweqwe"];
+    cow.sisters = null;
+    cow.sad = true;
+
+    function isSad() {
+        if (cow.sad) {
+            return 'Ohh :(';
+        }
+        else {
+            return 'Yay!';
+        }
+    }
+
+    for (var i = 0; i < cow.brothers.length; i++) {
+        console.log(cow.brothers[i]);
+    }*/
+</script>
+</body>
+</html>

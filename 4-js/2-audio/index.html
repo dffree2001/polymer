@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+       #playerDiv{
+           background: blue;
+           background-image: url(images.png);
+           width: 50%;
+           padding: 20px;
+           height: 300px;
+       }
+    </style>
+</head>
+<body>
+<div id="playerDiv">
+    <audio id="player">
+        <source src="zelda.mp3" type="audio/mpeg">
+        <source src="zelda.ogg" type="audio/ogg">
+    </audio>
+    <button id="play">PLAY</button>
+    <button id="pause">PAUSE</button>
+    <button id="volUp">Vol +</button>
+    <button id="volDn">Vol -</button>
+    <input id="volSlide" type="range" min="0" max="1.0" step="0.1" value="1.0" >
+    <button id="playpause">Play/Pause</button>
+</div>
+<script>
+    var myplayer = document.querySelector("#player");
+    myplayer.load();
+    var btnPlay = document.querySelector("#play");
+    btnPlay.addEventListener('click', function(e){
+        myplayer.play();
+    });
+    var btnPause = document.querySelector("#pause");
+    btnPause.addEventListener('click',function(e){
+        myplayer.pause();
+    })
+    var volUp = document.querySelector("#volUp");
+    volUp.addEventListener('click',function(e){
+        if(myplayer.volume < 1.0) {
+            myplayer.volume += 0.1;
+        }
+    })
+    var volDn = document.querySelector("#volDn");
+    volDn.addEventListener('click',function(e){
+        if(myplayer.volume > 0.1) {
+            myplayer.volume += -0.1;
+        }
+    })
+
+    var myslider = document.querySelector("#volSlide");
+    myslider.addEventListener('input', function(e){
+        myplayer.volume = myslider.value;
+    })
+
+
+    var toggleBtn = document.querySelector("#playpause");
+    toggleBtn.addEventListener('click', function(e){
+        if(myplayer.paused){
+            myplayer.play();
+            toggleBtn.textContent ="pause";
+        }else{
+            myplayer.pause();
+            toggleBtn.textContent= "play";
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<fcc-location latitude="34.0500" longitude="-118.2500" zoom="10"></fcc-location>
+<fcc-location></fcc-location>
+<script>
+    var element = Object.create(HTMLElement.prototype);
+
+    element.attachedCallback = function(){
+        var latitude = this.getAttribute('latitude');
+        var longitude = this.getAttribute('longitude');
+        img = new Image();
+
+        img.src="https://maps.googleapis.com/maps/api/staticmap?center=36.7682583,-119.79865849999997&zoom=17&size=700x700&sensor=false";
+        /*img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + ","  +
+        " longitude" + "&zoom=17&size=700x700&sensor=false";*/
+        this.innerHTML = "<img src='" + img.src + "' >";
+    }
+
+
+
+    document.registerElement('fcc-location', {prototype : element});
+
+</script>
+</body>
+</html>

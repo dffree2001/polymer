@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <style>
+        input:required{
+            border: 1px solid blue;
+        }
+        input:invalid{
+            border: 1px solid red;
+        }
+        input:valid{
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body>
+	<form>
+		<label for="name">Name *</label>
+		<input name="name" id="name" type="text" placeholder="John Wayne" required>
+		<label for="phone">Phone *</label>
+		<input name="phone" id="phone" type="tel" placeholder="XXX-XXX-XXXX" pattern="\d{3}[\-]\d{3}[\-]\d{4}" required>
+		<input type="submit" value="Send">
+	</form>
+<script>
+    var inputs = document.querySelectorAll('input');
+
+    function setValidationMsg(input){
+        if(input.validity.valueMissing){
+            input.setCustomValidity('Fill this out!');
+        }
+        if(input.validity.patternMismatch){
+            input.setCustomValidity('Fill it out like this xxx-xxx-xxxx');
+        }
+    }
+    for(var i=0; i<inputs.length; i++){
+        inputs[i].addEventListener('invalid', function(e){
+          setValidationMsg(e.target);
+        } )
+        inputs[i].addEventListener('input', function(e){
+            setValidationMsg(e.target);
+        })
+    }
+
+
+    /*input.setCustomValidity('test')
+    function send() {
+        var name = document.querySelector("#name");
+        var phone = document.querySelector("#phone");
+
+        if(name.validity.valueMissing){
+
+            name.setCustomValidity("Are you blind?");
+        }
+
+    }*/
+</script>
+</body>
+</html>

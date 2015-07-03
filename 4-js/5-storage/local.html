@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+How was your day? <textarea id="diary" rows="4" col="100"></textarea>
+
+The date:<input type="date" id="date">
+
+<script>
+
+    var diary = document.querySelector("#diary");
+    var date = document.querySelector('#date');
+    diary.addEventListener('input', function(e){
+        localStorage.setItem('diarydata', diary.value);
+    })
+    if(localStorage.getItem('diarydata')){
+        diary.value = localStorage.getItem('diarydata');
+    }
+    date.addEventListener('input', function(e){
+        localStorage.setItem('datedata', date.value);
+    })
+    if(localStorage.getItem('datedata')){
+        date.value = localStorage.getItem('datedata');
+    }
+
+
+
+
+</script>
+</body>
+</html>
+

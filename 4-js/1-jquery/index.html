@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+	<div id="box" class="box" width="300"></div>
+
+	<script>
+	// 1
+	$(function() {
+
+	});
+    document.addEventListener('DOMContentLoaded', function(e){
+        //document is loaded and ready for js
+    });
+	$("#box");
+    document.querySelector('#box');
+    document.getElementById('#box');
+	// 3
+	$(".box");
+    document.querySelector('.box');
+    document.querySelectorAll('.box');
+    document.getElementsByClassName('.box');
+	// 4
+	$("div");
+    document.getElementsByTagName('div');
+    document.querySelector('div');
+	// 5
+	$(".box").get(0);
+    document.querySelectorAll('.box[0]');
+    document.querySelector('.box');
+
+	// 6
+	$(document).on('click', function(event) {
+		console.log(event);
+	});
+    document.addEventListener('click', function(){});
+	// 7
+	$("#box").text("lorem");
+    document.querySelector('#box').textContent("lorem");
+
+	// 8
+	$("#box").html("<p>lorem</p>");
+    document.querySelector("#box").innerHTML = "<p>lorem</p>";
+	// 9
+	$("#box").append("<p>lorem</p>");
+    document.querySelector("#box").appendChild("<p>lorem</p>");
+    //text content is safer because it will render everything a string and not run a script
+    var p = document.createElement('p');
+    p.textContent = 'lorem';
+    document.querySelector("#box").appendChild(p);
+    //
+    var img = new Image();
+    img.src = "http://cs9264.vk.me/u786.jpg"
+    document.querySelector("#box").appendChild(img);
+	// 10
+	$("#box").attr("width");
+    document.querySelector("#box").getAttribute('width');
+	// 11
+	$("#box").attr("width", "400");
+    document.querySelector("#box").setAttribute('width', '300');
+	// 12
+	$("#box").removeAttr("width");
+    document.querySelector("#box").removeAttribute('width');
+	// 13
+	$("#box").addClass("selected");
+    document.querySelector("#box").className ='selected';
+    document.querySelector("#box").classList.add('xyz');
+	// 14
+	$("#box").removeClass("selected");
+    document.querySelector("#box").classList.remove('xyz');
+
+	// 15
+	$("#box").toggleClass("selected");
+    document.querySelector("#box").classList.toggle('box');
+	// 16
+	$("#box").hasClass("box");
+    document.querySelector("#box").classList.contains('box');
+	// 17
+	$("#box").css({
+		"background": "#F60",
+		"height": "300"
+	});
+    document.querySelector("#box").style.background = "#F60";
+    document.querySelector("#box").style.height = "300";
+	</script>
+</body>
+</html>

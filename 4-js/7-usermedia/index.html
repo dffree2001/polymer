@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="btnarea">
+    <button id="playbtn">PLAY</button>
+    <button id="pausebtn">PAUSE</button>
+    <button id="replay">REPLAY</button>
+    <p><span id="currentTime">0:00</span>/<span id="totalTime">0:00</span></p>
+</div>
+
+<script>
+    var video;
+    var playbtn = document.querySelector('#playbtn');
+    var pausebtn = document.querySelector('#pausebtn');
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+
+    var options = {
+        audio: false,
+        video: true
+    };
+
+
+
+    navigator.getUserMedia(options, success, error);
+
+    function success(result){
+        video = document.createElement('video');
+        video.src = URL.createObjectURL(result);
+        document.body.appendChild(video);
+
+        console.log(result);
+        playbtn.addEventListener('click', function(e){
+            video.play();
+
+
+        })
+        pausebtn.addEventListener('click', function(e){
+            video.stop();
+        })
+
+    }
+    function error(result){
+        console.log(result);
+    }
+</script>
+</body>
+</html>

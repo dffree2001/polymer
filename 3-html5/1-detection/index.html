@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="modernizr.min.js"></script>
+<style>
+    .websqldatabase{
+        background: green;
+    }
+    .no-websqldatabase{
+        background: red;
+    }
+</style>
+</head>
+<body>
+
+
+<script>
+    var htmlItem = document.querySelector('html');
+
+    if(htmlItem.classList.contains('websqldatabase')){
+        htmlItem.style.background = "green";
+    }else{
+        htmlItem.style.background = "red";
+    }
+
+    //Modernizr script
+    Modernizr.load({
+        test: Modernizr.geolocation,
+        yep: 'geo.js',
+        nope: 'googlemaps.js'
+    })
+</script>
+</body>
+</html>

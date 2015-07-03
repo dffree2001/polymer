@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<video>
+   <source src="rabbit.mp4" type="video/mp4">
+   <source src="rabbit.ogg" type="video/ogg">
+</video>
+<div id="btnarea">
+    <button id="playbtn">PLAY</button>
+    <button id="pausebtn">PAUSE</button>
+    <button id="replay">REPLAY</button>
+    <p><span id="currentTime">0:00</span>/<span id="totalTime">0:00</span></p>
+</div>
+
+<script>
+    var player = document.querySelector("video");
+
+    var playbtn = document.querySelector("#playbtn");
+    playbtn.addEventListener("click", function(e){
+        player.play();
+    });
+    var pausebtn = document.querySelector("#pausebtn");
+    pausebtn.addEventListener('click', function(){
+        player.pause();
+    });
+    var replaybtn = document.querySelector("#replay");
+    replaybtn.addEventListener('click', function(){
+        player.currentTime = 0;
+        player.play();
+    })
+
+
+    var currentTimeElement = document.querySelector("#currentTime");
+    player.addEventListener('timeupdate', function(e){
+        currentTimeElement.textContent = player.currentTime.toFixed(2);
+    })
+
+    var totalTimeElement = document.querySelector("#totalTime");
+    player.addEventListener('loadedmetadata', function(){
+        totalTimeElement.textContent = player.duration.toFixed(2);
+    })
+
+
+</script>
+
+</body>
+</html>
